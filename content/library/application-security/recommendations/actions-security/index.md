@@ -90,7 +90,7 @@ To secure GitHub Actions workflows, consider the following strategies:
 10. **Use `head.sha` instead of `head.ref`**: Where possible, reference by commit SHA instead of a user-provided branch name or tag (ref), especially in sensitive contexts (such as `run` steps). If required, use environment variable to store `head.ref` and reference it to prevent injection attack.
 11. **Use caution with public repositories**: Anyone can suggest changes to public repositories. Review workflow triggers, and never use self-hosted runners with public repositories.
 12. **Restrict allowed actions**: Use the [*Allow enterprise, and select non-enterprise, actions and reusable workflows*](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#controlling-access-to-public-actions-and-reusable-workflows) setting  to control which actions can run.
-13. **Segregate runners**: Use runner groups and labels to separate high-privilege runners from low-privilege runners, and restrict high-privilege runner groups to selected repositories or workflows to reduce exposure to secrets and sensitive resources.
+13. **Segregate runners**: Use runner groups and labels to separate high-privilege runners from low-privilege runners, and restrict high-privilege runner groups to selected repositories or workflows to reduce exposure to sensitive resources.
 
 ## Assumptions and preconditions
 
@@ -261,7 +261,7 @@ Consider defining the list of allowed actions using policy as code (e.g., via Te
 
 ### Segregate runners
 
-Use [runner groups](https://docs.github.com/en/actions/concepts/runners/runner-groups) or [labels](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/apply-labels) to separate high-privilege runners from low-privilege runners. High-privilege runners may have access to sensitive resources or direct host access, while low-privilege runners should not.
+Use [runner groups](https://docs.github.com/en/actions/concepts/runners/runner-groups) or [labels](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/apply-labels) to separate high-privilege runners from low-privilege runners. High-privilege runners may have access to sensitive resources, while low-privilege runners should not.
 
 This separation provides more granular control over [which repositories can access different runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/manage-access#changing-which-repositories-can-access-a-runner-group) and which [jobs can access specific runners](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job). It also reduces the risk that a compromised or misconfigured workflow could gain access to sensitive resources.
 
