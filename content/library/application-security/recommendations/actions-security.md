@@ -88,16 +88,10 @@ To secure GitHub Actions workflows, consider the following strategies:
 7. **Avoid workflow injection**: Sanitize user input and avoid using expression values in sensitive contexts (such as `run` steps) to prevent injection attacks.
 8. **Avoid `pull_request_target`**: This event runs workflows in the base repository context with elevated permissions. This can enable malicious execution using pull requests from forks.
 9. **Secure `workflow_run` workflows**: Treat all artifacts, code, and data from triggering workflows as untrusted. Use [branch filters](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#limiting-your-workflow-to-run-based-on-branches) and validate all inputs.
-<<<<<<< rungroup
 10. **Use `head.sha` instead of `head.ref`**: Where possible, reference by commit SHA instead of a user-provided branch name or tag (ref), especially in sensitive contexts (such as `run` steps). If required, use environment variable to store `head.ref` and reference it to prevent injection attack.
 11. **Use caution with public repositories**: Anyone can suggest changes to public repositories. Review workflow triggers, and never use self-hosted runners with public repositories.
 12. **Restrict allowed actions**: Use the [*Allow enterprise, and select non-enterprise, actions and reusable workflows*](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#controlling-access-to-public-actions-and-reusable-workflows) setting  to control which actions can run.
 13. **Segregate runners**: Use runner groups and labels to separate high-privilege runners from low-privilege runners, and restrict high-privilege runner groups to selected repositories or workflows to reduce exposure to sensitive resources.
-=======
-10. **Use `head.sha` instead of `head.ref`**: Where possible, reference by commit SHA instead of a user-provided branch name or tag (ref), especially in sensitive contexts (such as `run` steps). If require, use environment variable to store `head.ref` and reference it to prevent injection attack.
-11. **Use caution with public repositories**: Anyone can suggest changes to public repositories. Review workflow triggers, and never use self-hosted runners with public repositories.
-12. **Restrict allowed actions**: Use the [*Allow enterprise, and select non-enterprise, actions and reusable workflows*](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#controlling-access-to-public-actions-and-reusable-workflows) setting  to control which actions can run.
->>>>>>> main
 
 ## Assumptions and preconditions
 
@@ -135,7 +129,7 @@ Repository rulesets provide a strong defensive layer that complements workflow-l
 - [Require code scanning results](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-code-scanning-results): Identify security vulnerabilities before merge.
 - [Require signed commits](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-signed-commits): Ensure all commits are signed to prove who authored them and that they haven't been modified.
 - [Require workflows to pass before merging](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-workflows-to-pass-before-merging): Ensure organizational or enterprise-level requirements for workflows are met before merging. This could be a workflow that checks for required labels, validates commit messages, or performs other organizational policy checks.
-- Restrict bypass permissions: Limit bypass capabilities to emergencies and monitor via audit logs.
+- [Restrict bypass permissions](https://docs.github.com/en/code-security/how-tos/secure-your-secrets/manage-bypass-requests): Limit bypass capabilities to emergencies and monitor via audit logs.
 
 ### Implement least privilege for workflow permissions
 
