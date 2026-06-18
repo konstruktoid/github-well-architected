@@ -6,11 +6,7 @@ title: 'Securing GitHub Actions Workflows'
 weight: 5
 publishDate: 2024-08-16
 params:
-<<<<<<< rungroup
   authors: [{ name: 'Greg Mohler', handle: 'callmegreg' }, { name: 'Kitty Chiu', handle: 'kittychiu' }, { name: 'Thomas Sjögren', handle: 'konstruktoid' }]
-=======
-  authors: [{ name: 'Greg Mohler', handle: 'callmegreg' }, { name: 'Kitty Chiu', handle: 'kittychiu' }]
->>>>>>> main
 
 # Classifications of the framework to drive key concepts, design principles, and architectural best practices
 pillars:
@@ -138,10 +134,7 @@ Repository rulesets provide a strong defensive layer that complements workflow-l
 - [Require status checks to pass before merging](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-status-checks-to-pass-before-merging): Ensure automated validation checks pass before merging.
 - [Require code scanning results](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-code-scanning-results): Identify security vulnerabilities before merge.
 - [Require signed commits](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-signed-commits): Ensure all commits are signed to prove who authored them and that they haven't been modified.
-<<<<<<< rungroup
 - [Require workflows to pass before merging](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-workflows-to-pass-before-merging): Ensure organizational or enterprise-level requirements for workflows are met before merging. This could be a workflow that checks for required labels, validates commit messages, or performs other organizational policy checks.
-=======
->>>>>>> main
 - Restrict bypass permissions: Limit bypass capabilities to emergencies and monitor via audit logs.
 
 ### Implement least privilege for workflow permissions
@@ -273,7 +266,6 @@ The [allowed actions and reusable workflows setting](https://docs.github.com/en/
 
 Consider defining the list of allowed actions using policy as code (e.g., via Terraform or the REST API) to establish a request/approval process, track changes for audit purposes, and improve visibility into which actions are allowed.
 
-<<<<<<< rungroup
 ### Segregate runners
 
 Use [runner groups](https://docs.github.com/en/actions/concepts/runners/runner-groups) or [labels](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/apply-labels) to separate high-privilege runners from low-privilege runners. High-privilege runners may have access to sensitive resources, while low-privilege runners should not.
@@ -286,8 +278,6 @@ For example, you could create:
 - A runner group for runners with access to restricted networks.
 - A separate runner group for low-privilege tasks such as linting and static analysis, used in repositories where secrets are either absent entirely or isolated in separate environments.
 
-=======
->>>>>>> main
 ## Additional solution detail and trade-offs to consider
 
 ### Pinning actions based on a version tag
